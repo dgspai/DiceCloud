@@ -16,6 +16,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: |
-        docker login -u ${{ secrets.DOCKER_HUB_TOKEN }} -p ${{ secrets.DOCKER_HUB_USERNAME }}
+        docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin ${{ secrets.DOCKER_HUB_TOKEN }}
         docker build . --file Dockerfile --tag dgspai/dice-cloud:latest --tag dgspai/dice-cloud:${{ github.run_number }}
         docker push dgspai/dice-cloud --all-tags
