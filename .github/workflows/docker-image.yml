@@ -1,0 +1,21 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ version-2 ]
+  pull_request:
+    branches: [ version-2 ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: |
+        docker login -u ${{ secrets.DOCKER_HUB_TOKEN }} -p ${{ secrets.DOCKER_HUB_USERNAME }}
+        docker build . --file Dockerfile --tag dgspai/dice-cloud:latest --tag dgspai/dice-cloud:${{ github.run_number }}
+        docker push dgspai/dice-cloud --all-tags
