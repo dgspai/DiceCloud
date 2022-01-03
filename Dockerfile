@@ -1,6 +1,6 @@
-FROM ubuntu:19.04
-RUN apt-get update --quiet \
-    && apt-get install --quiet --yes \
+FROM ubuntu:latest
+RUN apt-get update -y \
+    && apt-get install -y \
     bsdtar \
     curl \
     git
