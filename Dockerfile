@@ -1,10 +1,8 @@
 FROM ubuntu:latest
 RUN apt-get update -y \
     && apt-get install -y \
-    bsdtar \
     curl \
     git
-RUN ln --symbolic --force $(which bsdtar) $(which tar)
 RUN useradd --create-home --shell /bin/bash dicecloud
 USER dicecloud
 WORKDIR /home/dicecloud
