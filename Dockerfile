@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:19.04
 RUN apt-get update --quiet \
     && apt-get install --quiet --yes \
     bsdtar \
