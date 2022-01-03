@@ -17,5 +17,5 @@ jobs:
     - name: Build the Docker image
       run: |
         docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_TOKEN }}
-        docker build . --file Dockerfile --tag dgspai/dice-cloud:latest --tag dgspai/dice-cloud:${{ github.run_number }}
-        docker push dgspai/dice-cloud --all-tags
+        docker build . --file Dockerfile --tag ${{ secrets.DOCKER_HUB_USERNAME }}/dice-cloud:latest --tag ${{ secrets.DOCKER_HUB_USERNAME }}/dice-cloud:${{ github.run_number }}
+        docker push ${{ secrets.DOCKER_HUB_USERNAME }}/dice-cloud --all-tags
