@@ -1,0 +1,16 @@
+name: Build and publish docker image
+on: push
+jobs:
+  build-container:
+    name: Build Docker container image and publish it
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Publish to Docker hub
+        uses: docker/build-push-action@v1
+        with:
+          repository_name: dgspai/dice-cloud
+          username: ${{ secrets.DOCKER_HUB_TOKEN }}
+          password: ${{ secrets.DOCKER_HUB_USERNAME }}
+          tags: latest, ${{ github.run_number }}
